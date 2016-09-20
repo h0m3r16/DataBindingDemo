@@ -14,30 +14,27 @@ public class CreateNoteActivity extends AppCompatActivity {
 
     public static final String ARG_NOTE = "note";
 
+    private Note mNote = new Note();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final ActivityCreateNoteBinding createNoteBinding = DataBindingUtil.setContentView(this, R.layout.activity_create_note);
+        createNoteBinding.setListener(this);
+        createNoteBinding.contentInclude.setNote(mNote);
 
         setSupportActionBar(createNoteBinding.toolbarInclude.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
-        createNoteBinding.activityCreateNoteFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!createNoteBinding.contentInclude.activityCreateNoteTitle.getText().toString().isEmpty() ||
-                        !createNoteBinding.contentInclude.activityCreateNoteBody.getText().toString().isEmpty()) {
-                    Note note = new Note(createNoteBinding.contentInclude.activityCreateNoteTitle.getText().toString(),
-                            createNoteBinding.contentInclude.activityCreateNoteBody.getText().toString());
+    public void onSaveNoteClick(View view) {
+        if (!mNote.getTitle().isEmpty() || !mNote.getBody().isEmpty()) {
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra(ARG_NOTE, mNote);
 
-                    Intent resultIntent = new Intent();
-                    resultIntent.putExtra(ARG_NOTE, note);
-
-                    CreateNoteActivity.this.setResult(RESULT_OK, resultIntent);
-                    CreateNoteActivity.this.finish();
-                }
-            }
-        });
+            CreateNoteActivity.this.setResult(RESULT_OK, resultIntent);
+            CreateNoteActivity.this.finish();
+        }
     }
 
 }

@@ -3,6 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="listener"
+            type="com.databinding.notes.ui.CreateNoteActivity"/>
+    </data>
+
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,11 +32,11 @@
             layout="@layout/content_create_note"/>
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/activity_create_note_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
+            android:onClick="@{listener.onSaveNoteClick}"
             android:src="@android:drawable/ic_menu_save"/>
 
     </android.support.design.widget.CoordinatorLayout>
