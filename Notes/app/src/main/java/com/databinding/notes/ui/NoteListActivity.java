@@ -24,17 +24,9 @@ public class NoteListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         ActivityNoteListBinding noteListBinding = DataBindingUtil.setContentView(this, R.layout.activity_note_list);
+        noteListBinding.setListener(this);
 
         setSupportActionBar(noteListBinding.toolbarInclude.toolbar);
-
-        noteListBinding.activityNoteListFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivityForResult(new Intent(NoteListActivity.this,
-                        CreateNoteActivity.class), REQUEST_CODE_CREATE);
-            }
-        });
-
 
         noteListBinding.contentInclude.activityNoteListList.setHasFixedSize(true);
         noteListBinding.contentInclude.activityNoteListList.setLayoutManager(new LinearLayoutManager(this));
@@ -60,5 +52,9 @@ public class NoteListActivity extends AppCompatActivity {
             default:
                 break;
         }
+    }
+
+    public void onCreateNoteClick(View view) {
+        startActivityForResult(new Intent(NoteListActivity.this, CreateNoteActivity.class), REQUEST_CODE_CREATE);
     }
 }

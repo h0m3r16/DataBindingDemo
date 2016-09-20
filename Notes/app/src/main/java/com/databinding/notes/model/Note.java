@@ -20,6 +20,8 @@ public class Note implements Parcelable {
     private String mBody;
 
     public Note() {
+        mTitle = "";
+        mBody = "";
     }
 
     public Note(String title, String body) {
