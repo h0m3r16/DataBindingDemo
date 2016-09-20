@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.databinding.notes.R;
 import com.databinding.notes.databinding.ListItemNoteBinding;
 import com.databinding.notes.model.Note;
+import com.databinding.notes.viewmodel.NoteViewModel;
 
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Note note = mData.get(position);
-        holder.mListItemNoteBinding.setNote(note);
+        holder.mListItemNoteBinding.setViewModel(new NoteViewModel(note));
     }
 
     @Override

@@ -7,8 +7,8 @@
     <data>
 
         <variable
-            name="note"
-            type="com.databinding.notes.model.Note"/>
+            name="viewModel"
+            type="com.databinding.notes.viewmodel.CreateNoteViewModel"/>
     </data>
 
     <LinearLayout
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/activity_create_note_title_hint"
-            android:text="@={note.title}"
+            android:text="@={viewModel.title}"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
         <EditText
@@ -38,7 +38,7 @@
             android:hint="@string/activity_create_note_body_hint"
             android:inputType="textMultiLine"
             android:lines="10"
-            android:text="@={note.body}"
+            android:text="@={viewModel.body}"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
     </LinearLayout>
